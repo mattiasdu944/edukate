@@ -94,7 +94,6 @@ const FormSignIn = () => {
                 </InputGroup>
 
                 {/* Pais */}
-
                 <InputGroup>
                     <FormLabel>Selecciona tu Pais</FormLabel>
                     <Select
@@ -151,7 +150,6 @@ const FormSignIn = () => {
 
                 <Button type='submit' colorScheme='purple'>Button</Button>
             </FormControl>
-
         </form>
     )
 }
