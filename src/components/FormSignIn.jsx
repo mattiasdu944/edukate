@@ -48,6 +48,9 @@ const FormSignIn = () => {
                 position: 'top-right',
                 status: 'error',
                 variant: 'left-accent',
+                containerStyle: {
+                    color: 'red'
+                },
                 isClosable: true,
             })
             return
@@ -58,6 +61,9 @@ const FormSignIn = () => {
             position: 'top-right',
             status: 'success',
             variant: 'left-accent',
+            containerStyle: {
+                color: 'green'
+            },
             isClosable: true,
         })
         console.log('Enviando Datos');
@@ -67,7 +73,7 @@ const FormSignIn = () => {
     return (
         <form onSubmit={enviarDatos}>
             <FormControl>
-                <InputGroup>
+                <InputGroup display="flex" flexDirection="column" mb={5}>
                     <FormLabel>Ingresar nombre</FormLabel>
                     <Input
                         type='text'
@@ -79,7 +85,7 @@ const FormSignIn = () => {
                 </InputGroup>
 
                 {/* Apellidos */}
-                <InputGroup>
+                <InputGroup display="flex" flexDirection="column" mb={5}>
 
                     <FormLabel>Ingresar apellidos</FormLabel>
                     <Input
@@ -94,7 +100,7 @@ const FormSignIn = () => {
                 </InputGroup>
 
                 {/* Pais */}
-                <InputGroup>
+                <InputGroup display="flex" flexDirection="column" mb={5}>
                     <FormLabel>Selecciona tu Pais</FormLabel>
                     <Select
                         onChange={e => setPais(e.target.value)}
@@ -110,10 +116,10 @@ const FormSignIn = () => {
                         )}
                     </Select>
 
-                </InputGroup>
+                </InputGroup >
 
                 {/* celular */}
-                <InputGroup>
+                <InputGroup display="flex" flexDirection="column" mb={5}>
                     <FormLabel>Numero de Telefono</FormLabel>
                     <Input
                         type='number'
@@ -125,7 +131,7 @@ const FormSignIn = () => {
                 </InputGroup>
 
                 {/* Correo */}
-                <InputGroup>
+                <InputGroup display="flex" flexDirection="column" mb={5}> 
                     <FormLabel>Ingresar Correo</FormLabel>
                     <Input
                         type='correo'
@@ -137,7 +143,7 @@ const FormSignIn = () => {
                 </InputGroup>
 
                 {/* password */}
-                <InputGroup>
+                <InputGroup display="flex" flexDirection="column" mb={5}>
                     <FormLabel>Registrar contraseña</FormLabel>
                     <Input
                         type='password'
@@ -148,7 +154,7 @@ const FormSignIn = () => {
                     />
                 </InputGroup>
 
-                <Button type='submit' colorScheme='purple'>Button</Button>
+                <Button type='submit' colorScheme='indigo'>Registrar</Button>
             </FormControl>
         </form>
     )

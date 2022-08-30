@@ -1,8 +1,9 @@
+import { Box, Button} from '@chakra-ui/react'
 import React from 'react'
 
 const InicioPage = () => {
   return (
-    <div>InicioPage</div>
+    <Button bg="indigo.100" _hover={{bg:'indigo.300'}}>Welcome</Button>
   )
 }
 
