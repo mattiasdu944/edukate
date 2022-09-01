@@ -6,9 +6,25 @@ export const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: '#202124',
+        bg: '#101011',
         color: '#EDF2F7',
       },
+      h1:{
+        fontSize:'4rem',
+        fontWeight:'700',
+      },
+      h2:{
+        fontSize:'3.5rem',
+        fontWeight:'700'
+      },
+      h3:{
+        fontSize:'3rem',
+        fontWeight:'700'
+      },
+      h4:{
+        fontSize:'2.5rem',
+        fontWeight:'700'
+      }
     },
   },
   colors: {

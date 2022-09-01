@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FormControl, FormLabel, InputGroup, Input, Button, Select, useToast } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 
 const FormSignIn = () => {
 
@@ -67,8 +69,10 @@ const FormSignIn = () => {
             isClosable: true,
         })
         console.log('Enviando Datos');
+        
     }
 
+    let navigate = useNavigate();
 
     return (
         <form onSubmit={enviarDatos}>
@@ -107,12 +111,12 @@ const FormSignIn = () => {
                         placeholder='Select option'
                     >
                         {paises.map((item, index) =>
-                            <option
+                            <Option
                                 value={item.nombre}
                                 key={index}
                             >
                                 {item.nombre}
-                            </option>
+                            </Option>
                         )}
                     </Select>
 
@@ -154,10 +158,25 @@ const FormSignIn = () => {
                     />
                 </InputGroup>
 
-                <Button type='submit' colorScheme='indigo'>Registrar</Button>
+                <Button type='submit' bg="indigo.100" _hover={{bg: 'indigo.300'}} _active={{bg: 'indigo.100'}} fontSize="1.2rem" py="1.5rem" w="100%">Registrar</Button>
+                
+                <Enlace onClick={() => navigate('/login')}>Iniciar Sesion</Enlace>
             </FormControl>
         </form>
     )
 }
 
+const Option = styled.option`
+    color: #000;   
+`
+
+//#7E21D4
+const Enlace =styled.p`
+    text-decoration: underline;
+    margin: .5rem 0;
+    cursor: pointer;
+    color: #7E21D4;
+    font-weight: 700;
+    font-size:1.2rem;
+` 
 export default FormSignIn

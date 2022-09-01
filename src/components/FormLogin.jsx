@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import {
     FormControl,
     FormLabel,
@@ -6,6 +8,10 @@ import {
     Input,
     Button
 } from '@chakra-ui/react'
+import styled from 'styled-components';
+
+
+
 const FormLogin = () => {
     
     const [correo, setCorreo] = useState('');
@@ -16,10 +22,12 @@ const FormLogin = () => {
         e.preventDefault();
     }
 
+  let navigate = useNavigate();
+
   return (
-    <form onSubmit={enviarDatos}>
+    <From onSubmit={enviarDatos}>
         <FormControl>
-            <InputGroup>
+            <InputGroup display="flex" flexDirection="column" mb={5}>
                 <FormLabel>Direccion de correo</FormLabel>
                 <Input 
                     type='email' 
@@ -30,7 +38,7 @@ const FormLogin = () => {
                 />
             </InputGroup>
 
-            <InputGroup>
+            <InputGroup display="flex" flexDirection="column" mb={5}>
                 <FormLabel>Contraseña</FormLabel>
                 <Input 
                     type='password'
@@ -41,10 +49,33 @@ const FormLogin = () => {
                 />
             </InputGroup>
 
-            <Button type='submit' colorScheme='purple'>Button</Button>
+            <Button 
+            type='submit' 
+            bg="indigo.100" 
+            _hover={{bg: 'indigo.300'}} 
+            _active={{bg: 'indigo.100'}} 
+            fontSize="1.2rem" 
+            py="1.5rem" 
+            w="100%"
+            >
+                Iniciar sesion
+            </Button>
+            <Enlace onClick={() => navigate('/signin')}> No tienes cuenta? Registrate</Enlace>
         </FormControl>
-    </form>
+    </From>
   )
 }
+
+const From = styled.form`
+    max-width: 550px;
+`
+const Enlace= styled.p`
+    text-decoration: underline;
+    color: #7E21D4;
+    font-weight: 700;
+    font-size:1.2rem;
+    cursor:pointer;
+    margin: 1.5rem;
+`
 
 export default FormLogin
