@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { FormControl, FormLabel, InputGroup, Input, Button, Select, useToast } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import { supabase } from '../backend/supabase'
+
 import styled from 'styled-components';
 
 const FormSignIn = () => {
@@ -39,6 +41,21 @@ const FormSignIn = () => {
     
     // VALIDACION DEL FORMULARIO
     const toast = useToast()
+
+    const registrarUsuario = async () => {
+        const response = await supabase
+        .from('usuarios')
+        .insert([{ 
+            nombre: nombre, 
+            apellidos: apellido,
+            correo: correo,
+            foto_perfil:'',
+            password: password
+        }])
+        console.log(response);
+    }
+
+
     const enviarDatos = (e) => {
         e.preventDefault();
         
@@ -69,7 +86,7 @@ const FormSignIn = () => {
             isClosable: true,
         })
         console.log('Enviando Datos');
-        
+        registrarUsuario();
     }
 
     let navigate = useNavigate();
