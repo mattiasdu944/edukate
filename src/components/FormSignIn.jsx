@@ -11,48 +11,48 @@ const FormSignIn = () => {
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
     const [correo, setCorreo] = useState('');
-    const [pais, setPais] = useState('');
     const [celular, setCelular] = useState('');
     const [password, setPassword] = useState('');
-
-
-    // ESTADOS PARA GUARDAR LOS PAISES
-    const [paises, setPaises] = useState([]);
-
-    // API DE PAISES
-    const cargarPaises = async () => {
-        const res = await fetch('https://countriesnow.space/api/v0.1/countries');
-        const response = await res.json();
-        const country = response.data.map(country => {
-            const objeto = {
-                id: country.iso2,
-                nombre: country.country
-            }
-            return objeto;
-        });
-        setPaises(country);
-    }
-
-    // CARGAR LOS PAISES
-    useEffect(() => {
-        cargarPaises();
-    }, [])
 
     
     // VALIDACION DEL FORMULARIO
     const toast = useToast()
 
     const registrarUsuario = async () => {
-        const response = await supabase
-        .from('usuarios')
-        .insert([{ 
-            nombre: nombre, 
-            apellidos: apellido,
-            correo: correo,
-            foto_perfil:'',
-            password: password
-        }])
-        console.log(response);
+        try{
+            const { user, session, error } = await supabase.auth.signUp({
+                email: correo,
+                password: password,
+            })
+            console.log(user.id)
+            const response = await supabase
+            .from('usuarios')
+            .insert([{ 
+                id: user.id,
+                nombre: nombre, 
+                apellidos: apellido,
+                correo: correo,
+                password: password
+            }])
+
+            console.log(user.id);
+
+        } catch(error){
+            console.error(error);
+            return;
+        };
+        
+    }
+
+    const handleSubmit = async (e)=>{
+        /*Supabase.a.auth.signIn({
+            correo
+            //email
+        } 
+        );*/
+        e.preventDefault();
+
+    
     }
 
 
@@ -60,7 +60,7 @@ const FormSignIn = () => {
         e.preventDefault();
         
         // VALIDACIONES
-        if(nombre.trim() === '' || pais.trim() === '' ||apellido.trim() === '' || correo.trim() === '' || celular.trim()==='' || password.trim() === ''){
+        if(nombre.trim() === '' ||apellido.trim() === '' || correo.trim() === '' || celular.trim()==='' || password.trim() === ''){
             toast({
                 title: `Datos Erroneos`,
                 description: 'Casillas vacias',
@@ -85,12 +85,13 @@ const FormSignIn = () => {
             },
             isClosable: true,
         })
-        console.log('Enviando Datos');
+
         registrarUsuario();
+
     }
 
     let navigate = useNavigate();
-
+    
     return (
         <form onSubmit={enviarDatos}>
             <FormControl>
@@ -121,7 +122,7 @@ const FormSignIn = () => {
                 </InputGroup>
 
                 {/* Pais */}
-                <InputGroup display="flex" flexDirection="column" mb={5}>
+                {/* <InputGroup display="flex" flexDirection="column" mb={5}>
                     <FormLabel>Selecciona tu Pais</FormLabel>
                     <Select
                         onChange={e => setPais(e.target.value)}
@@ -137,7 +138,7 @@ const FormSignIn = () => {
                         )}
                     </Select>
 
-                </InputGroup >
+                </InputGroup > */}
 
                 {/* celular */}
                 <InputGroup display="flex" flexDirection="column" mb={5}>

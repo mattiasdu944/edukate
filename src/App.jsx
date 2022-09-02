@@ -1,8 +1,6 @@
-import React from 'react'
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import {Routes,Route} from "react-router-dom";
+import { supabase } from './backend/supabase';
 import Layout from './components/Layout';
 import InicioPage from './pages/InicioPage';
 import LoginPage from './pages/LoginPage';
@@ -10,6 +8,8 @@ import SignInPage from './pages/SignInPage';
 
 
 const App = () => {
+
+
 
 
   return (
