@@ -1,8 +1,11 @@
-import React from 'react'
+
+import { useEffect } from 'react';
 import {
   Routes,
   Route,
+  useNavigate,
 } from "react-router-dom";
+import { supabase } from './backend/supabase';
 import Layout from './components/Layout';
 import InicioPage from './pages/InicioPage';
 import LoginPage from './pages/LoginPage';
@@ -10,7 +13,18 @@ import SignInPage from './pages/SignInPage';
 
 
 const App = () => {
-
+  let navigate = useNavigate();
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if(!session){
+        navigate('/login')
+      }else{
+        navigate('/')
+        console.log(session, event);
+      }
+      
+    })
+  }, [])
 
   return (
     <Routes>
