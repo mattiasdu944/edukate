@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { supabase } from './backend/supabase';
 import Layout from './components/Layout';
+import { useVerification } from './hooks/useVerification';
 import InicioPage from './pages/InicioPage';
 import LoginPage from './pages/LoginPage';
 import SignInPage from './pages/SignInPage';
@@ -20,9 +21,7 @@ const App = () => {
         navigate('/login')
       }else{
         navigate('/')
-        console.log(session, event);
       }
-      
     })
   }, [])
 
@@ -32,6 +31,7 @@ const App = () => {
       <Route path="/signin" element={<SignInPage />} />
 
       <Route path='/' element={<Layout />}>
+        {useVerification()}
         <Route path='' element={<InicioPage />} />
       </Route>
 

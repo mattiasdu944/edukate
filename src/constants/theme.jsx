@@ -6,6 +6,7 @@ export const theme = extendTheme({
   styles: {
     global: {
       body: {
+        
         bg: '#101011',
         color: '#EDF2F7',
       },
@@ -22,15 +23,23 @@ export const theme = extendTheme({
         fontWeight:'700'
       },
       h4:{
-        fontSize:'2.5rem',
-        fontWeight:'700'
+        fontSize:'2rem',
+        fontWeight:'600'
+      },
+      li:{
+        listStyle:'none'
       }
     },
   },
   colors: {
     indigo: {
-      100: "#7E21D4",
+      100: "#ba69f4",
       300: "#7018C1",
+    },
+    gray: {
+      100: "#252429",
+      
+      500: "#3a3a3c"
     },
     textColor:{
       100: "#EDF2F7",
