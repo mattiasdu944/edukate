@@ -33,7 +33,7 @@ export const theme = extendTheme({
   },
   colors: {
     indigo: {
-      100: "#ba69f4",
+      100: "#9746d1",
       300: "#7018C1",
     },
     gray: {

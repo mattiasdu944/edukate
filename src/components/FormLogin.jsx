@@ -5,7 +5,7 @@ import {
     FormControl,
     FormLabel,
     InputGroup,
-    Input,
+    
     Button
 } from '@chakra-ui/react'
 import styled from 'styled-components';
@@ -38,6 +38,7 @@ const FormLogin = () => {
 
   return (
     <From onSubmit={enviarDatos}>
+        <h4>Iniciar Sesion</h4>
         <FormControl>
             <InputGroup display="flex" flexDirection="column" mb={5}>
                 <FormLabel>Direccion de correo</FormLabel>
@@ -66,13 +67,14 @@ const FormLogin = () => {
             bg="indigo.100" 
             _hover={{bg: 'indigo.300'}} 
             _active={{bg: 'indigo.100'}} 
-            fontSize="1.2rem" 
+            
+            fontSize={{ base: '1rem', md: '1.25rem' }}
             py="1.5rem" 
             w="100%"
             >
                 Iniciar sesion
             </Button>
-            <Enlace onClick={() => navigate('/signin')}> No tienes cuenta? Registrate</Enlace>
+            <Enlace onClick={() => navigate('/signin')}> No tienes cuenta? <span>Registrate Gratis!</span></Enlace>
         </FormControl>
     </From>
   )
@@ -80,14 +82,27 @@ const FormLogin = () => {
 
 const From = styled.form`
     max-width: 550px;
+    min-width: none;
 `
 const Enlace= styled.p`
-    text-decoration: underline;
-    color: #7E21D4;
+    /* text-decoration: underline; */
     font-weight: 700;
-    font-size:1.2rem;
+    font-size:1rem;
     cursor:pointer;
     margin: 1.5rem;
+    & span{
+        color: #9746d1;
+        text-decoration: underline;
+    }
+`
+const Input = styled.input`
+    border-radius: .25rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: .5rem 1rem;
+
+    &::placeholder{
+        color: #676767;
+    }
 `
 
 export default FormLogin
