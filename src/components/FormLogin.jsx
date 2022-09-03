@@ -9,17 +9,29 @@ import {
     Button
 } from '@chakra-ui/react'
 import styled from 'styled-components';
+import { supabase } from '../backend/supabase';
 
 
 
 const FormLogin = () => {
-    
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('')
+    
+    
+    
+    const iniciarSesion = async () => {
+        const { user, session, error } = await supabase.auth.signIn({
+          email: correo,
+          password: password,
+        })
+    }
 
 
     const enviarDatos = (e) => {
         e.preventDefault();
+
+        iniciarSesion();
+
     }
 
   let navigate = useNavigate();

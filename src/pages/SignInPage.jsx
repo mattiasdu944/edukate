@@ -22,6 +22,8 @@ const SignInPage = () => {
             alignContent="end"
             src='https://campus.open-bootcamp.com/static/media/login_dark.e964d5dd01eea4e84171.png'
             alt='Dan Abramov'
+            w='650px'
+            h='100vh'
           />
         </FlexContainer>
       {/* </Container> */}

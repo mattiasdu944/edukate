@@ -1,10 +1,18 @@
 import { Box, Button} from '@chakra-ui/react'
 import React from 'react'
+import styled from 'styled-components'
 
 const InicioPage = () => {
   return (
-    <Button bg="indigo.100" _hover={{bg:'indigo.300'}}>Welcome</Button>
+    <Section>
+
+    </Section>
   )
 }
+
+const Section = styled.section`
+  padding: 5rem 0 1rem;
+`
+
 
 export default InicioPage
