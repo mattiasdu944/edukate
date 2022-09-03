@@ -16,7 +16,7 @@ const LoginPage = () => {
 
         <LoginContainer>
           <Box textAlign='center' mb={5}>
-            <Title>Edukate </Title>
+            <Title>Edukate</Title>
             <p>
               Te ayudamos a que puedas crecer <br />
               profesionalmente y ser un profesional <br />
@@ -71,7 +71,7 @@ const FormContainer = styled.div`
   border:1px solid #000;
   box-shadow: 0px 10px 13px rgba(0, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-content:space-between;
   width: 100%;
   padding: 2rem 6rem;

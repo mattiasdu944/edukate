@@ -6,7 +6,8 @@ import {
     FormLabel,
     InputGroup,
     
-    Button
+    Button,
+    Text
 } from '@chakra-ui/react'
 import styled from 'styled-components';
 import { supabase } from '../backend/supabase';
@@ -38,7 +39,7 @@ const FormLogin = () => {
 
   return (
     <From onSubmit={enviarDatos}>
-        <h4>Iniciar Sesion</h4>
+        <Text fontWeight={700} fontSize={{ base: '2.5rem', md: '3rem' }}>Iniciar Sesion</Text>
         <FormControl>
             <InputGroup display="flex" flexDirection="column" mb={5}>
                 <FormLabel>Direccion de correo</FormLabel>
@@ -83,6 +84,7 @@ const FormLogin = () => {
 const From = styled.form`
     max-width: 550px;
     min-width: none;
+    margin-top: 1rem;
 `
 const Enlace= styled.p`
     /* text-decoration: underline; */
