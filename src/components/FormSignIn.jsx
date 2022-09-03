@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormControl, FormLabel, InputGroup, Input, Button, Select, useToast } from '@chakra-ui/react'
+import { FormControl, FormLabel, InputGroup, Button, Select, useToast } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
 import { supabase } from '../backend/supabase'
 
@@ -14,30 +14,6 @@ const FormSignIn = () => {
     const [pais, setPais] = useState('');
     const [celular, setCelular] = useState('');
     const [password, setPassword] = useState('');
-
-
-    // ESTADOS PARA GUARDAR LOS PAISES
-    const [paises, setPaises] = useState([]);
-
-    // API DE PAISES
-    const cargarPaises = async () => {
-        const res = await fetch('https://countriesnow.space/api/v0.1/countries');
-        const response = await res.json();
-        const country = response.data.map(country => {
-            const objeto = {
-                id: country.iso2,
-                nombre: country.country
-            }
-            return objeto;
-        });
-        setPaises(country);
-    }
-
-    // CARGAR LOS PAISES
-    useEffect(() => {
-        cargarPaises();
-    }, [])
-
     
     // VALIDACION DEL FORMULARIO
     const toast = useToast()
@@ -49,7 +25,6 @@ const FormSignIn = () => {
             nombre: nombre, 
             apellidos: apellido,
             correo: correo,
-            foto_perfil:'',
             password: password
         }])
         console.log(response);
@@ -120,25 +95,6 @@ const FormSignIn = () => {
 
                 </InputGroup>
 
-                {/* Pais */}
-                <InputGroup display="flex" flexDirection="column" mb={5}>
-                    <FormLabel>Selecciona tu Pais</FormLabel>
-                    <Select
-                        onChange={e => setPais(e.target.value)}
-                        placeholder='Select option'
-                    >
-                        {paises.map((item, index) =>
-                            <Option
-                                value={item.nombre}
-                                key={index}
-                            >
-                                {item.nombre}
-                            </Option>
-                        )}
-                    </Select>
-
-                </InputGroup >
-
                 {/* celular */}
                 <InputGroup display="flex" flexDirection="column" mb={5}>
                     <FormLabel>Numero de Telefono</FormLabel>
@@ -185,6 +141,17 @@ const FormSignIn = () => {
 
 const Option = styled.option`
     color: #000;   
+`
+
+const Input = styled.input`
+    background-color: #161616;
+    color: whitesmoke;
+    border-radius:.25rem;
+    padding: .5rem 1rem;
+    border: 2px solid #2a2a2a;
+    &:focus{
+        outline: 2px solid #7E21D4 ;
+    }
 `
 
 //#7E21D4
