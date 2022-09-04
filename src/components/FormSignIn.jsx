@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormControl, FormLabel, InputGroup, Button, useToast } from '@chakra-ui/react'
+import { FormControl, FormLabel, InputGroup, Button, useToast, Text } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
 import { supabase } from '../backend/supabase'
 
@@ -85,6 +85,7 @@ const FormSignIn = () => {
 
     return (
         <form onSubmit={enviarDatos}>
+            <Text mb={5} fontWeight={700} fontSize={{base:'2rem', md:"3rem"}}>Registrate!</Text>
             <FormControl>
                 <InputGroup display="flex" flexDirection="column" mb={5}>
                     <FormLabel>Ingresar nombre</FormLabel>
@@ -150,7 +151,7 @@ const FormSignIn = () => {
 
                 <Button type='submit' bg="indigo.100" _hover={{ bg: 'indigo.300' }} _active={{ bg: 'indigo.100' }} fontSize="1.2rem" py="1.5rem" w="100%">Registrar</Button>
 
-                <Enlace onClick={() => navigate('/login')}>Iniciar Sesion</Enlace>
+                <Enlace onClick={() => navigate('/login')}> Ya tiene cuenta? <span>Inicia Sesion</span></Enlace>
             </FormControl>
         </form>
     )
@@ -161,23 +162,24 @@ const Option = styled.option`
 `
 
 const Input = styled.input`
-    background-color: #161616;
-    color: whitesmoke;
-    border-radius:.25rem;
+    border-radius: .25rem;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: .5rem 1rem;
-    border: 2px solid #2a2a2a;
-    &:focus{
-        outline: 2px solid #7E21D4 ;
+
+    &::placeholder{
+        color: #676767;
     }
 `
 
-//#7E21D4
-const Enlace = styled.p`
-    text-decoration: underline;
-    margin: .5rem 0;
-    cursor: pointer;
-    color: #7E21D4;
+const Enlace= styled.p`
+    /* text-decoration: underline; */
     font-weight: 700;
     font-size:1.2rem;
+    cursor:pointer;
+    margin: 1.5rem;
+    & span{
+        color: #9746d1;
+        text-decoration: underline;
+    }
 `
 export default FormSignIn
