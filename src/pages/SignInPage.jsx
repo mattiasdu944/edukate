@@ -22,7 +22,6 @@ const SignInPage = () => {
               <ImageContainer>
                 <Image
                   src='https://qjzaxgwtmenwwhddpvuh.supabase.co/storage/v1/object/sign/assets/05.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhc3NldHMvMDUucG5nIiwiaWF0IjoxNjYyMjUyNDYxLCJleHAiOjE5Nzc2MTI0NjF9.GvM8cURKJImfpC7uaV1aiAwi6v7bKC3yXjzdMpfoXsc'
-                  
                   alt='Edukate illustration'
                 />
               </ImageContainer>

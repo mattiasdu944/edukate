@@ -7,9 +7,6 @@ import { Box, Container } from '@chakra-ui/react'
 
 
 const LoginPage = () => {
-
-
-
   return (
     <Section>
       <Container maxW='5xl'>
@@ -29,6 +26,7 @@ const LoginPage = () => {
             <ImageContainer>
               <Image
                 src='https://www.tzuzulcode.com/illustrations/spaceship/spaceship1.png'
+                alt='Edukate illustration'
               />
             </ImageContainer>
           </FormContainer>
@@ -103,7 +101,7 @@ const image = keyframes`
 `;
 
 const Image = styled.img`
-  max-width: 300px;
+  max-width: 350px;
   display: inline-block;
   animation: ${image} 2s linear infinite;
 
