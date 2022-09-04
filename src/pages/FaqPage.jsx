@@ -1,8 +1,8 @@
-import { Box, Button, Container} from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
 import React from 'react'
 import styled from 'styled-components'
 
-const InicioPage = () => {
+const FaqPage = () => {
   return (
     <Section>
       <Container maxW="5xl" textAlign="center">
@@ -12,7 +12,6 @@ const InicioPage = () => {
     </Section>
   )
 }
-
 const Section = styled.section`
   padding: 5rem 0 1rem;
   min-height: 100vh;
@@ -23,5 +22,4 @@ const Image = styled.img`
     border-radius: 1rem;
     
 `
-
-export default InicioPage
+export default FaqPage
