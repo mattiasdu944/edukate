@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Avatar, Button, Input, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { Avatar, Box, Button, Input, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { supabase } from '../backend/supabase';
 import { avatarMenu, enlaces } from '../constants/constants';
 import { NavLink } from 'react-router-dom';
@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 const Navbar = () => {
 
-  const [navResponsive, setNavResponsive] = useState(true);
+  const [navResponsive, setNavResponsive] = useState(false);
 
   const cerrarSesion = async () => {
     try {
@@ -23,24 +23,27 @@ const Navbar = () => {
     <Nav>
       <NavContainer>
         <h4>Edukate</h4>
-        <NavResponsive navResponsive>
+        <NavResponsive className={navResponsive ? 'active' : ''}>
           <NavList>
             {enlaces.map((enlace, index) =>
               <li
                 key={index}
               >
                 <NavLink
+                  onClick={() => setNavResponsive(false)}
                   to={enlace.path}>
                   {enlace.nombre}
                 </NavLink>
               </li>
-              
+
             )}
+            <Box fontSize="1.3rem" cursor="pointer" display={{md:'none' }}>
+
               <i onClick={() => setNavResponsive(false)} className="uil uil-multiply"></i>
+            </Box>
           </NavList>
 
           <form>
-
             <InputGroup>
               <SearchInput
                 type='text'
@@ -59,14 +62,9 @@ const Navbar = () => {
 
         {/* Avatar */}
         <Menu isLazy>
-        
-            <MenuButton display="flex" justifyContent="center" alignItems="center">
-              <Avatar name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
-              <i className="uil uil-angle-down"></i>
-            </MenuButton>
-          
-
-
+          <MenuButton display="flex" justifyContent="center" alignItems="center">
+            <Avatar name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
+          </MenuButton>
           {/* Avatar Item and Menu */}
           <MenuList bg="gray.100" borderColor="gray.500">
             {avatarMenu.map((enlace, index) =>
@@ -90,9 +88,12 @@ const Navbar = () => {
               Cerrar Sesion
             </MenuItem>
           </MenuList>
+
         </Menu>
-        <i onClick={() => setNavResponsive(true)} className="uil uil-bars"></i>
-        {/* <Button bg="none" _hover={{ bg: 'none' }} color="indigo.100" onClick={() => cerrarSesion()}>Cerrar Sesion</Button> */}
+        <Box fontSize="1.3rem" cursor="pointer" display={{md:'none' }}>
+
+          <i onClick={() => setNavResponsive(true)} className="uil uil-bars"></i>
+        </Box>
       </NavContainer>
     </Nav>
   )
@@ -100,7 +101,12 @@ const Navbar = () => {
 
 const Nav = styled.nav`
   position: fixed;
-  background-color: #252429;
+  background-color: rgba(0, 0, 0, .4);
+  backdrop-filter: blur(60px);
+  border-radius: .5rem;
+  border:1px solid #000;
+  box-shadow: 0px 10px 13px rgba(0, 0, 0, 0.2);
+  /* background-color: #252429; */
   width: 100%;
 `
 
@@ -154,10 +160,12 @@ const NavResponsive = styled.div`
   gap: 2rem;
 
   @media (max-width: 768px){
-    display: none;
-    /* position:fixed;
-    top: ${props => props.navResponsive ? 0 : 100};
-    left:0;
+    /* display: none; */
+    background-color: rgba(0, 0, 0);
+    backdrop-filter: blur(5px);
+    position:fixed;
+    top: -100rem;
+    left:-1px;
     right:0;
     flex-direction:column-reverse;
     justify-content: center;
@@ -167,13 +175,17 @@ const NavResponsive = styled.div`
     height: 100vh;
     transition:0.2s;
     text-align:center;
-    background: #252429;
-    z-index:100 ;
+    /* background: #252429; */
+    z-index: 1000;
     
     & ul{
       flex-direction: column;
-      gap: 3rem;
-    } */
+      gap: 2.5rem;
+    }
+
+    &.active{
+      top: 0;
+    }
   }
 `
 
