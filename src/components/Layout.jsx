@@ -6,12 +6,11 @@ const Layout = () => {
   return (
     <>
         <Navbar/>
+        
         <Outlet/> 
-        <div className="">
-            Footer
-        </div>
     </>
   )
 }
+
 
 export default Layout
