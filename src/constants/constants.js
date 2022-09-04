@@ -9,7 +9,7 @@ export const enlaces = [
     },
     {
         nombre:'Para Empresas',
-        path:'Empresas'
+        path:'empresas'
     },
     {
         nombre:'FAQ',
