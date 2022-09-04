@@ -8,8 +8,11 @@ import {
 import { supabase } from './backend/supabase';
 import Layout from './components/Layout';
 import { useVerification } from './hooks/useVerification';
+import EmpresasPage from './pages/EmpresasPage';
+import FaqPage from './pages/FaqPage';
 import InicioPage from './pages/InicioPage';
 import LoginPage from './pages/LoginPage';
+import NosotrosPage from './pages/NosotrosPage';
 import SignInPage from './pages/SignInPage';
 
 
@@ -33,6 +36,10 @@ const App = () => {
       <Route path='/' element={<Layout />}>
         {useVerification()}
         <Route path='' element={<InicioPage />} />
+        <Route path='nosotros' element={<NosotrosPage/>}/>
+        <Route path='empresas' element={<EmpresasPage />} />
+        <Route path='faq' element={<FaqPage />} />
+        
       </Route>
 
     </Routes>
